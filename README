@@ -11,7 +11,7 @@ Quickstart
 1) Create an account at http://openshift.redhat.com/
 2) Create a php-5.3 application and attach mysql to it:
     $ rhc app create -a mediawiki -t php-5.3
-    $ rhc app cartridge add -a mediawiki -c mysql-5.1
+    $ rhc cartridge add -a mediawiki -c mysql-5.1
 3) Add this upstream mediawiki repo
     $ cd mediawiki
     $ git remote add upstream -m master git://github.com/openshift/mediawiki-example.git
