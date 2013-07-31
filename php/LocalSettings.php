@@ -51,7 +51,7 @@ $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype           = "mysql";
-$wgDBserver         = $_ENV['OPENSHIFT_MYSQL_DB_HOST'];
+$wgDBserver         = $_ENV['OPENSHIFT_MYSQL_DB_HOST'].":".$_ENV['OPENSHIFT_MYSQL_DB_PORT'];
 $wgDBname           = "openshift_mediawiki";
 $wgDBuser           = $_ENV['OPENSHIFT_MYSQL_DB_USERNAME'];
 $wgDBpassword       = $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD'];
