@@ -1,14 +1,14 @@
 OpenShift - MediaWiki
 =====================
 
-This repository is designed to be used with http://openshift.redhat.com/
+This repository is designed to be used with https://www.openshift.com
 applications.  To use, just follow the quickstart below.
 
 
 Quickstart
 ==========
 
-1) Create an account at http://openshift.redhat.com/
+1) Create an account at https://www.openshift.com
 2) Create a php application with mysql:
     $ rhc app create mediawiki php-5.3 mysql-5.1 
 3) Add this upstream mediawiki repo
