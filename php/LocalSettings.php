@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
-## Openshift Settings
+## OpenShift Settings
 
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
