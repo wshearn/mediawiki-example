@@ -129,7 +129,6 @@ $messages = array(
 'history'           => 'Kasaysayan kang Pahina',
 'history_short'     => 'Kasaysayan',
 'updatedmarker'     => 'ginpabag-o halin kang orihi ko nga pagbisita',
-'info_short'        => 'Impormasyon',
 'printableversion'  => "Bersyon nga sarang ma-''print''",
 'permalink'         => "Permanyente nga ''link''",
 'print'             => 'Printa',
@@ -138,7 +137,7 @@ $messages = array(
 'delete'            => 'Para',
 'deletethispage'    => 'Paraun ang dya nga Pahina',
 'protect'           => 'Amlig',
-'protect_change'    => 'islan ang proteksyon',
+'protect_change'    => 'iislan',
 'protectthispage'   => 'Amligan ang dya nga pahina',
 'unprotect'         => 'huksun ang proteksyon',
 'unprotectthispage' => 'Huksun ang proteksyon sa dya nga pahina',
@@ -191,7 +190,7 @@ Lantawa sa [[Special:Version|version kang page]].',
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Pahina',
 'nstab-media'     => 'Pahina kang Midya',
-'nstab-special'   => 'Espesyal',
+'nstab-special'   => 'Espesyal nga pahina',
 'nstab-project'   => 'Pahina kang Proyekto',
 'nstab-image'     => 'Inayap',
 'nstab-mediawiki' => 'Mensahe',
@@ -214,7 +213,7 @@ Lantawa sa [[Special:Version|version kang page]].',
 'viewsource'           => 'Turukun ang ginhalinan',
 
 # Login and logout pages
-'remembermypassword' => "Tandaan ang akun nga ''log-in'' sa dya nga ''computer'' (for a maximum of $1 {{PLURAL:$1|day|days}})",
+'remembermypassword' => "Tandaan ang akun nga ''log-in'' sa dya nga ''browser'' (kang maximum nga $1 {{PLURAL:$1|ka adlaw|ka mga adlaw}})",
 'nologinlink'        => "Himo ka sangka ''account''",
 'createaccount'      => "Himo ka ''account''",
 
@@ -259,7 +258,7 @@ Lantawa sa [[Special:Version|version kang page]].',
 # Special:ListUsers
 'listusers-submit' => 'Ipakita',
 
-# E-mail user
+# Email user
 'emailmessage' => 'Mensahe',
 
 # Delete
@@ -271,7 +270,7 @@ Lantawa sa [[Special:Version|version kang page]].',
 # Undelete
 'undelete-search-submit' => 'Sagap',
 
-'sp-contributions-talk'   => 'Wakal',
+'sp-contributions-talk'   => 'wakal',
 'sp-contributions-submit' => 'Sagap',
 
 # What links here

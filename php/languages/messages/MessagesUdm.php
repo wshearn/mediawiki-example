@@ -1,5 +1,5 @@
 <?php
-/** Udmurt (Удмурт)
+/** Udmurt (удмурт)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -35,13 +35,36 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK    => 'Категория_сярысь_вераськон',
 );
 
+// Remove Russian aliases
+$namespaceGenderAliases = array();
+
 $linkTrail = '/^([a-zа-яёӝӟӥӧӵ“»]+)(.*)$/sDu';
 $fallback8bitEncoding = 'windows-1251';
 $separatorTransformTable = array( ',' => ' ', '.' => ',' );
 
 $messages = array(
 # User preference toggles
-'tog-underline' => 'Линкъёс ултӥз гожен сызоно',
+'tog-underline'               => 'Линкъёс ултӥз гожен сызоно',
+'tog-highlightbroken'         => 'Кушкам чӧлсконъёсты <a href="" class="new">та кадь</a> возматыны (озьытэк: <a href="" class="internal">?</a>)',
+'tog-hideminor'               => 'Берпуметӥ тупатонъёслэн списоксэс ичи воштонъёстэк возьматыны',
+'tog-hidepatrolled'           => 'Берпуметӥ тупатонъёслэн списоксэс партрулировать каремын воштонъёстэк возьматыны',
+'tog-newpageshidepatrolled'   => 'Выль бамъёслэн списоксэс партрулировать каремын бамъёстэк возьматыны',
+'tog-extendwatchlist'         => 'Чаклан списокын вань тупатонъёсты возьматыны (озьытэк берпуметӥоссэс гинэ)',
+'tog-usenewrc'                => 'Выль тупатонъёслэн списоксэс умояллям сямен возьматыны (JavsScript кулэ)',
+'tog-numberheadings'          => 'Заголовокъёсты автоматически нумеровать карыны',
+'tog-showtoolbar'             => 'Тупатон тӥрлыкъёслэн панельзэс возьматыны (JavaScript кулэ)',
+'tog-editondblclick'          => 'Бамъёсты шырлэн валтӥсь зӥбонэз кык пол ӝог зӥбиськыкуз тупатыны (JavaScript кулэ)',
+'tog-editsection'             => 'Котькуд секциез [тапатоно] чӧлсконэн возьматыны',
+'tog-editsectiononrightclick' => 'Cекциосты шырлэн бур кнопкаез заголовок вылын зӥбиськыкуз тупатыны (JavaScript кулэ)',
+'tog-showtoc'                 => 'Пуштросэз возьматоно (2-лэсь трос заголовокъем бамъёс понна)',
+'tog-rememberpassword'        => 'Мынам пыроннимме та браузерлэн тодаз возьыны ($1 яке $1-лэсь ӧжытгес нунал ӵоже гинэ)',
+'tog-watchcreations'          => 'Мынэсьтым кылдытэм бамъёсме но ӝуткам файлъёсме чаклан списокам пыртыны',
+'tog-watchdefault'            => 'Бамъёсты, кудъёстэс мон тупатӥсько, мынам чаклкан списокам пыртыны',
+'tog-watchmoves'              => 'Бамъёсты, кудъёстэс мон мукет интые выжтӥсько, мынам чаклкан списокам пыртыны',
+'tog-watchdeletion'           => 'Бамъёсты, кудъёстэс мон ӵушисько, мынам чаклкан списоке пыртыны',
+'tog-minordefault'            => 'Вань воштонъёсты «ичи воштон» пусэн пусйыны',
+'tog-previewontop'            => 'Утён азьвыл учконлэсь укнозэ тупатон укнолэсь азьвылгес возьматыны',
+'tog-previewonfirst'          => 'Бам нырысьсэ утиськыкуз уётн азьвыл учконэз возьматыны',
 
 'underline-always'  => 'Котьку',
 'underline-never'   => 'Ноку',
@@ -107,7 +130,7 @@ $messages = array(
 'dec'           => 'тст',
 
 # Categories related messages
-'pagecategories'                 => '$1 категория',
+'pagecategories'                 => '{{PLURAL:$1|Категория|Категориос}}',
 'category_header'                => '«$1» категориысь бамъёс',
 'subcategories'                  => 'Подкатегориос',
 'category-media-header'          => '«$1» категориысь файлъёс',
@@ -124,8 +147,7 @@ $messages = array(
 'index-category'                 => 'Индексировать кароно бамъёс',
 'noindex-category'               => 'Индексировать каронтэм бамъёс',
 
-'linkprefix'   => '/^(.*?)(„|«)$/sDu',
-'mainpagetext' => "'''MediaWiki движок азинлыко пуктэмын.'''",
+'linkprefix' => '/^(.*?)(„|«)$/sDu',
 
 'about'      => 'Та сярысь',
 'article'    => 'Статья',
@@ -195,9 +217,10 @@ $messages = array(
 'viewsource' => 'Кодзэ учкыны',
 
 # Login and logout pages
-'login'                   => 'Википедие пырон',
+'login'                   => 'Пырон',
 'nav-login-createaccount' => 'Нимдэс вераны / Регистрациез ортчытыны',
 'userlogin'               => 'Регистрациез ортчытыны яке Википедие пырыны',
+'userloginnocreate'       => 'Пырон',
 'logout'                  => 'Кошкыны',
 'userlogout'              => 'Кошкыны',
 'createaccount'           => 'выль вики-авторлэн регистрациез',
@@ -218,7 +241,7 @@ $messages = array(
 'searchresults'      => 'Шедьтэмын',
 'searchresulttext'   => 'Проектлэн бамъёстӥз утчан сярысь тыро-быдогес тодэмды потӥз ке, учке [[{{MediaWiki:Helppage}}|«Юан-веран» люкетэз]].',
 'searchhelp-url'     => 'Help:Валэктон',
-'search-result-size' => '$1 кыл',
+'search-result-size' => '$1 кыл({{PLURAL:$2|1 word|$2 words}})',
 
 # Preferences page
 'preferences'     => 'настройкаос',
@@ -247,7 +270,7 @@ $messages = array(
 'nbytes' => '$1 байт',
 'move'   => 'Мукет интые выжтыны',
 
-# E-mail user
+# Email user
 'emailmessage' => 'Ивортон:',
 
 # Watchlist

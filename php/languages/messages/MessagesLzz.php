@@ -10,7 +10,9 @@
  * @author Bombola
  * @author Dato deutschland
  * @author Dawid Deutschland
+ * @author Erdemaslancan
  * @author Ibero-kolxi
+ * @author Reedy
  * @author The Evil IP address
  */
 
@@ -93,14 +95,6 @@ $messages = array(
 'index-category'                => "Indexi na uğun but'k'ape",
 'noindex-category'              => 'Indexi muşi na var uğun sayfape',
 
-'mainpagetext'      => "'''Mediawiki dido k'ai ik'idu.'''",
-'mainpagedocfooter' => "Vik'i şeni muç'o ixmarinen ya mutxanepe oguru şeni [http://meta.wikimedia.org/wiki/Help:Contents oxmaruşi rexberis] o3'k'edit.
-
-== Ağani na gyoç’k’u maxmarepe ==
-* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Ok'iduşi ayarepeşi liste]
-* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki P'anda Na-k'itxu K'itxalape]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki e-mailepeşiş liste]",
-
 'about'         => 'Şeni',
 'newwindow'     => '(ağne penceres guin3ʼkʼen)',
 'cancel'        => 'İpʼtʼali qʼvi',
@@ -119,8 +113,11 @@ $messages = array(
 'qbspecialpages' => 'Doxmeli sayfape',
 
 # Vector skin
-'vector-action-delete' => 'Jili',
-'vector-view-edit'     => 'Doktiri',
+'vector-action-delete'  => 'Jili',
+'vector-action-protect' => 'İçvi',
+'vector-view-create'    => 'dokʼidi',
+'vector-view-edit'      => 'Doktiri',
+'variants'              => "Variant'epe",
 
 'errorpagetitle'   => 'Çilata',
 'returnto'         => '$1 butʼkʼaşa goikti.',
@@ -132,7 +129,6 @@ $messages = array(
 'searcharticle'    => 'İgzali',
 'history'          => 'Butʼkʼaş tarixi',
 'history_short'    => 'Tarixi',
-'info_short'       => 'Çkina',
 'printableversion' => "Kart'alişa na geibaz*gen versiyoni",
 'permalink'        => 'Am xalişa kʼontaktʼi qʼvi',
 'edit'             => 'doktiri',
@@ -177,7 +173,7 @@ $messages = array(
 
 'ok'                      => 'HO',
 'retrievedfrom'           => '"$1" adresişen eizdinu',
-'youhavenewmessages'      => 'Ağani <u>$1</u> giğun. ($2)',
+'youhavenewmessages'      => 'Ağani $1 giğun. ($2)',
 'newmessageslink'         => 'ağani mesajepe',
 'newmessagesdifflink'     => 'çodinaşi oktiroba',
 'youhavenewmessagesmulti' => "$1's ağne mesajepe giğun",
@@ -228,9 +224,10 @@ Dudicoxopes oxmaruşi yasaği na ren ar, varna daha dido kʼarakʼtʼeri uğun.'
 'userlogout'              => 'Siteşen Kogamaxti',
 'nologin'                 => "Hesabi va giğuni? '''$1'''",
 'nologinlink'             => 'Hesabi dokʼidi.',
+'gotaccountlink'          => 'Sitʼeşa amaxti',
 'mailmypassword'          => 'Ağne pʼarola-çkimi moncğoni',
 
-# Password reset dialog
+# Change password dialog
 'oldpassword' => "Mcveşi p'arola:",
 'newpassword' => "Ağani P'arola:",
 
@@ -245,8 +242,6 @@ Dudicoxopes oxmaruşi yasaği na ren ar, varna daha dido kʼarakʼtʼeri uğun.'
 'extlink_tip'     => 'Galeni kʼontʼaktʼi (Adresiş dudis http:// ukʼatit)',
 'headline_sample' => 'Dudicoxoşi nçʼara',
 'headline_tip'    => '2. derece dudicoxo',
-'math_sample'     => 'Matematʼikuri-ifade-doçʼarit',
-'math_tip'        => 'Matʼematʼikuri formuli (LaTeX)',
 'nowiki_sample'   => 'Oxoşkveri formatʼi nçʼara-tkvani ak doçʼarit.',
 'nowiki_tip'      => 'vikʼiş formatʼi ipʼtʼali qʼvi.',
 'image_tip'       => 'Doxveri dosya',
@@ -279,7 +274,7 @@ varna am butʼkʼa [{{fullurl:{{FULLPAGENAME}}|action=edit}} gaktirinen]</span>.
 paktʼiş doloxe ren (detayepe şeni $1's o3ʼkʼedi).
 Na qʼvi meşvelaşa başka makʼaturepeşkʼelen pʼatʼi mutxanepe ixvenen varna xemoşletinerot do uoçodinurot başka svapeşa niçinen, aya kʼabuli qʼvi varna am sitʼe şeni mutu mo ikip!<br />
 Edo amuş metʼi, ak mxuciş meçamu ginonna, meşvelape ti-skani kʼala oçʼaruşi re, varna ofi3ialurişa gon3ʼkʼimeri na ren ar kʼaynağişen (odudeşen) varna başka oxoşkveri kʼaynağepeşen (odudepeşen) na ezdi kʼabuli oxvenuşi re.<br />
-'''<center>DOXMELİ HAKʼEPETE NA İŞİNAXENAN XANDAPE AK MO UKʼATEPT!</center>'''",
+'''DOXMELİ HAKʼEPETE NA İŞİNAXENAN XANDAPE AK MO UKʼATEPT!'''",
 'templatesused'                    => 'Am butʼkʼas na ixmarinen {{PLURAL:$1|şabloni|şablonepe}}:',
 'templatesusedpreview'             => 'Am "Evvelişen i3ʼkʼedi" fonkʼsionis na ixmarinen {{PLURAL:$1|şabloni|şablonepe}}:',
 'template-protected'               => '(oçvu)',
@@ -313,7 +308,7 @@ Oxo3ʼonapape: (a3ʼineri) = a3ʼineri versiyoni kʼala na ren farkʼi,
 'revertmerge' => 'Artikʼartişen okʼo3ʼkʼi',
 
 # Diffs
-'history-title'           => '"$1" butʼkʼaşi tarixi',
+'history-title'           => 'Butʼkʼaşi tarixi "$1"',
 'difference'              => '(Versiyonepeşi farkʼepe)',
 'lineno'                  => '$1. satʼiri:',
 'compareselectedversions' => 'Na goşiğen versiyonepe okʼo3ʼiri',
@@ -339,6 +334,7 @@ Oxo3ʼonapape: (a3ʼineri) = a3ʼineri versiyoni kʼala na ren farkʼi,
 'search-interwiki-more'     => '(çkva)',
 'search-mwsuggest-enabled'  => 'okʼvandupete',
 'search-mwsuggest-disabled' => 'okʼvandu varen',
+'searchall'                 => 'mteli',
 'nonefound'                 => "'''Notʼi''': Xvala, namtini svacoxope maartani oqʼopinot igoren.
 Ogoruşi dudis '''all:''' pʼrefiksi okʼatute doloçʼareli na ren iri şeyi (oğarğaluşi butʼkʼape, şablonepe, doçkva şeyepeti iqʼvasen) mgori varna pʼrefiksi oqʼopinot na igoren svacoxo ixmarit.",
 'powersearch'               => 'Mordineri ogoru',
@@ -417,7 +413,10 @@ Ogoruşi dudis '''all:''' pʼrefiksi okʼatute doloçʼareli na ren iri şeyi (o
 'uploadlogpage' => 'Dosya oncğonu kʼayitʼepe',
 'uploadedimage' => 'Siteşa na incğonen resimi: "[[$1]]"',
 
+'license-header' => 'Lisans',
+
 # File description page
+'file-anchor-link'          => 'Dosya',
 'filehist'                  => 'Dosyaşi tarixi',
 'filehist-help'             => 'Dosyaşi tarixi oz*iru şeni Ndğa/Ora burme-muşis na renan tarixepes o3ʼkʼedi.',
 'filehist-deleteall'        => 'mteli jili',
@@ -471,19 +470,17 @@ Ogoruşi dudis '''all:''' pʼrefiksi okʼatute doloçʼareli na ren iri şeyi (o
 'linksearch' => 'Galeni kʼontaktʼepe',
 
 # Special:Log/newusers
-'newuserlogpage'          => 'Ağani maxmareş kʼayitʼepe',
-'newuserlog-create-entry' => 'Ağani maxmare',
+'newuserlogpage' => 'Ağani maxmareş kʼayitʼepe',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(makʼaturepeşi listʼe)',
 
-# E-mail user
+# Email user
 'emailuser' => 'Maxmares e-maili oncğoni',
 
 # Watchlist
 'watchlist'         => 'çkimi gotxozu listʼe',
 'mywatchlist'       => 'Çkimi gotxozu listʼe',
-'addedwatch'        => 'Skani gotxozu listʼeşa ikʼayitʼinu.',
 'addedwatchtext'    => '"<nowiki>[[:$1]]</nowiki>" coxoni butʼkʼa [[Special:Watchlist|gotxozu listʼes]] ikʼayitʼinu.
 
 Na moxtasen oras, am butʼkʼaşa do am butʼkʼa kʼala alakʼali na ren oğarğaluşi butʼkʼaşa na ixvenasen oktirobape ak ilistʼelinasen.
@@ -491,7 +488,6 @@ Na moxtasen oras, am butʼkʼaşa do am butʼkʼa kʼala alakʼali na ren oğar�
 Dido kʼai o3xunu şeni doloxe muşis [[Special:RecentChanges|çodinaşi oktirobapeşi listʼe]] stʼatʼias dolom3ʼkʼupineri harfepete ilistʼelinasenan.
 
 Butʼkʼai gotxozu listʼeşen ojilu şeni "gotxozu naşkʼvi" linkʼişa gebaz*git.',
-'removedwatch'      => "Skani gotxozu list'eşen nijilu",
 'removedwatchtext'  => '"[[:$1]]" but\'k\'a, [[Special:Watchlist|skani gotxozu list\'eşen]] nijilu.',
 'watch'             => 'Amus gatxozi',
 'watchthispage'     => 'Butʼkʼa gatxozi',
@@ -509,9 +505,8 @@ Butʼkʼai gotxozu listʼeşen ojilu şeni "gotxozu naşkʼvi" linkʼişa gebaz*
 'confirmdeletetext'     => 'Aşoten am butʼkʼa varna dosya, mteli golaxteri kʼayitʼepe kʼala datʼabeizişen nijilen.
 Am dulyaşen na yeçkindasen zararepe giçkinna do am dulya [[{{MediaWiki:Policy-url}}|Ojiluşi kʼaidepe]] şeni mtini renya isimadep na, am dulya doqʼvi.',
 'actioncomplete'        => 'Aksiyoni içodinu.',
-'deletedtext'           => '"<nowiki>$1</nowiki>" nijilu.
+'deletedtext'           => '"$1" nijilu.
 Xolosi oras jileri na renanpe oz*iru şeni: $2.',
-'deletedarticle'        => '"[[$1]]" aya nijilu',
 'dellogpage'            => 'Ojiluşi kʼayitʼepe',
 'deletecomment'         => 'Muşen:',
 'deleteotherreason'     => 'Majurani/ilave sebebi:',
@@ -528,7 +523,7 @@ Xolosi oras jileri na renanpe oz*iru şeni: $2.',
 'protectexpiry'               => 'Am tarixis içoden:',
 'protect_expiry_invalid'      => 'Am tarixis var içoden, mtini va ren.',
 'protect_expiry_old'          => 'Golaxteris soni oxmaruşi ora.',
-'protect-text'                => "'''<nowiki>$1</nowiki>''' butʼkʼaşi oçvaluşi sinori akolen gazʼiren do gaktirinen.",
+'protect-text'                => "'''$1''' butʼkʼaşi oçvaluşi sinori akolen gazʼiren do gaktirinen.",
 'protect-locked-access'       => "Butʼkʼaşi oçvalu sinorepe oktiru şeni maxmare-hesabi skanis yetʼkʼi var uğun.
 '''$1''' butʼkʼaşi maartani tercihepe antepe renan:",
 'protect-cascadeon'           => 'Am butʼkʼa, "kʼademoni oçvuşi sistemi" aktʼifi na ixvenu do tude na ren {{PLURAL:$1|$1 butʼkʼas|$1 butʼkʼas}} na ixmarinetʼu şeni a3ʼi içven.
@@ -546,7 +541,6 @@ Am butʼkʼaşi oçvuşi sinori gaktirinen; ama am oktiroba, kʼademoni oçvalu�
 
 # Undelete
 'undeletelink'              => 'i3ʼkʼedi/komoiği',
-'undeletedarticle'          => '[[$1]] goiktu.',
 'undelete-search-submit'    => 'Mgori',
 'undelete-show-file-submit' => 'Ho',
 
@@ -566,6 +560,7 @@ Am butʼkʼaşi oçvuşi sinori gaktirinen; ama am oktiroba, kʼademoni oçvalu�
 
 'sp-contributions-newbies'  => 'Xvala ağani maxmarepeşi meşvelape ko3ʼiri',
 'sp-contributions-blocklog' => 'Bloğiş kʼayitʼi',
+'sp-contributions-talk'     => 'Mesaji',
 'sp-contributions-search'   => 'Meşvelape mgori',
 'sp-contributions-username' => 'IP varna maxmare:',
 'sp-contributions-submit'   => 'Mgori',
@@ -589,7 +584,7 @@ Am butʼkʼaşi oçvuşi sinori gaktirinen; ama am oktiroba, kʼademoni oçvalu�
 # Block/unblock
 'blockip'                  => 'Maxmares bloği qʼvi',
 'ipboptions'               => '2 saatʼi:2 hours,1 ndğa:1 day,3 ndğa:3 days,1 doloni:1 week,2 doloni:2 weeks,1 tuta:1 month,3 tuta:3 months,6 tuta:6 months,1 3ʼana:1 year,pʼanda:infinite',
-'ipblocklist'              => 'Bloği xveneri na renan IP adresepe do maxmareş coxope',
+'ipblocklist'              => 'Bloği do maxmareş',
 'blocklink'                => 'bloği qʼvi',
 'unblocklink'              => 'bloği kezdi',
 'change-blocklink'         => 'bloği doktiri',
@@ -626,14 +621,15 @@ Mu iqʼven başka coxo doçʼari.',
 'talkexists'       => "'''Butʼkʼa dido kʼai itirinu, mara oğarğaluşi butʼkʼa var itirinu çunki na itirinasen coxos zate ar butʼkʼa rtʼu. Mu iqʼven butʼkʼaşi doloçʼareli nç'arape majurani butʼkʼaşa ti-skani kʼala itirini.'''",
 'movedto'          => 'itirinu:',
 'movetalk'         => 'Korenna, "oğarğaluşi" butʼkʼa muşiti mendiği.',
-'1movedto2'        => '[[$1]] butʼkʼa muşişi ağani coxo: [[$2]]',
-'1movedto2_redir'  => '[[$1]] stʼatʼiaşi adresi iktirinu do ağani adresi [[$2]] butʼkʼaşa niçinu',
 'movelogpage'      => 'Coxo oktirobaşi kʼayitʼepe',
 'movereason'       => 'Muşen:',
 'revertmove'       => 'komoiği',
 
 # Export
 'export' => 'Butʼkʼa ikʼayitʼi',
+
+# Namespace 8 related
+'allmessagesname' => 'Coxo',
 
 # Thumbnails
 'thumbnail-more' => 'Didi qʼvi',
@@ -698,11 +694,10 @@ Mu iqʼven başka coxo doçʼari.',
 'nextdiff'     => 'Ukʼaçxineri versiyoni kʼala na ren farkʼi →',
 
 # Media information
-'file-info-size'       => '$1 × $2 pikseli, dosyaşi didinoba: $3, MIME type: $4',
-'file-nohires'         => '<small>Çkva kʼai ozʼiramuşis na uğun versiyoni va ren.</small>',
-'svg-long-desc'        => 'SVG dosya, coxoten $1 × $2 pʼikʼseli, dosyaşi didinoba: $3',
-'show-big-image'       => 'Tam ozʼiramuşi',
-'show-big-image-thumb' => '<small>"Evvelişen i3ʼkʼedi" fonkʼsionişi didinoba: $1 × $2 pikseli</small>',
+'file-info-size' => '$1 × $2 pikseli, dosyaşi didinoba: $3, MIME type: $4',
+'file-nohires'   => 'Çkva kʼai ozʼiramuşis na uğun versiyoni va ren.',
+'svg-long-desc'  => 'SVG dosya, coxoten $1 × $2 pʼikʼseli, dosyaşi didinoba: $3',
+'show-big-image' => 'Tam ozʼiramuşi',
 
 # Bad image list
 'bad_image_list' => 'Formatʼi aşo ren:
@@ -717,18 +712,23 @@ Ukʼaçxe na mulunan kʼontʼaktʼepe istʼisna oqʼopinot kʼabuli ixvenen. Mes
 'metadata-expand'   => 'Detayepe ko3ʼiri',
 'metadata-collapse' => 'Detayepe doşinaxi',
 'metadata-fields'   => 'Am butʼkʼas na ilistʼelinen EXIF metadataş burmepe, resimi ozʼiramuşi butʼkʼapes metadata tʼablo na ğuru oras ixmarinen. Majuranepeti maartani oqʼopinot işinaxasen.
-
 * make
 * model
 * datetimeoriginal
 * exposuretime
 * fnumber
 * isospeedratings
-* focallength',
+* focallength
+* artist
+* copyright
+* imagedescription
+* gpslatitude
+* gpslongitude
+* gpsaltitude',
 
 # External editor support
 'edit-externally'      => 'Dosyas, kʼompʼuteris na renan pʼrogramepe kʼala oktirobape doqʼvi.',
-'edit-externally-help' => '(Dido çkina şeni metʼas na renan [http://www.mediawiki.org/wiki/Manual:External_editors galeni xvenaş tercihepe] (İngilisuri) butʼkʼa muşis o3ʼkʼedit)',
+'edit-externally-help' => '(Dido çkina şeni metʼas na renan [https://www.mediawiki.org/wiki/Manual:External_editors galeni xvenaş tercihepe] (İngilisuri) butʼkʼa muşis o3ʼkʼedit)',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'mteli',
