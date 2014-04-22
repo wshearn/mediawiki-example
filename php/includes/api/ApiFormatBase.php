@@ -1,6 +1,6 @@
 <?php
 /**
- * API for MediaWiki 1.8+
+ *
  *
  * Created on Sep 19, 2006
  *
@@ -23,11 +23,6 @@
  *
  * @file
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( 'ApiBase.php' );
-}
 
 /**
  * This is the abstract base class for API formatters.
@@ -146,11 +141,17 @@ abstract class ApiFormatBase extends ApiBase {
 			return; // skip any initialization
 		}
 
-		header( "Content-Type: $mime; charset=utf-8" );
+		$this->getMain()->getRequest()->response()->header( "Content-Type: $mime; charset=utf-8" );
+
+		//Set X-Frame-Options API results (bug 39180)
+		global $wgApiFrameOptions;
+		if ( $wgApiFrameOptions ) {
+			$this->getMain()->getRequest()->response()->header( "X-Frame-Options: $wgApiFrameOptions" );
+		}
 
 		if ( $isHtml ) {
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 <?php if ( $this->mUnescapeAmps ) {
@@ -169,7 +170,7 @@ abstract class ApiFormatBase extends ApiBase {
 <small>
 You are looking at the HTML representation of the <?php echo( $this->mFormat ); ?> format.<br />
 HTML is good for debugging, but probably is not suitable for your application.<br />
-See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
+See <a href='https://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 <a href='<?php echo( $script ); ?>'>API help</a> for more information.
 </small>
 <?php
@@ -235,8 +236,10 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 	public function getBuffer() {
 		return $this->mBuffer;
 	}
+
 	/**
 	 * Set the flag to buffer the result instead of printing it.
+	 * @param $value bool
 	 */
 	public function setBufferResult( $value ) {
 		$this->mBufferResult = $value;
@@ -257,25 +260,38 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 	 * @return string
 	 */
 	protected function formatHTML( $text ) {
-		global $wgUrlProtocols;
-
 		// Escape everything first for full coverage
 		$text = htmlspecialchars( $text );
 
 		// encode all comments or tags as safe blue strings
 		$text = preg_replace( '/\&lt;(!--.*?--|.*?)\&gt;/', '<span style="color:blue;">&lt;\1&gt;</span>', $text );
-		// identify URLs
-		$protos = implode( "|", $wgUrlProtocols );
-		// This regex hacks around bug 13218 (&quot; included in the URL)
-		$text = preg_replace( "#(($protos).*?)(&quot;)?([ \\'\"<>\n]|&lt;|&gt;|&quot;)#", '<a href="\\1">\\1</a>\\3\\4', $text );
 		// identify requests to api.php
-		$text = preg_replace( "#api\\.php\\?[^ \\()<\n\t]+#", '<a href="\\0">\\0</a>', $text );
+		$text = preg_replace( '#^(\s*)(api\.php\?[^ <\n\t]+)$#m', '\1<a href="\2">\2</a>', $text );
 		if ( $this->mHelp ) {
 			// make strings inside * bold
 			$text = preg_replace( "#\\*[^<>\n]+\\*#", '<b>\\0</b>', $text );
 			// make strings inside $ italic
 			$text = preg_replace( "#\\$[^<>\n]+\\$#", '<b><i>\\0</i></b>', $text );
 		}
+
+		// Armor links (bug 61362)
+		$masked = array();
+		$text = preg_replace_callback( '#<a .*?</a>#', function ( $matches ) use ( &$masked ) {
+			$sha = sha1( $matches[0] );
+			$masked[$sha] = $matches[0];
+			return "<$sha>";
+		}, $text );
+
+		// identify URLs
+		$protos = wfUrlProtocolsWithoutProtRel();
+		// This regex hacks around bug 13218 (&quot; included in the URL)
+		$text = preg_replace( "#(($protos).*?)(&quot;)?([ \\'\"<>\n]|&lt;|&gt;|&quot;)#", '<a href="\\1">\\1</a>\\3\\4', $text );
+
+		// Unarmor links
+		$text = preg_replace_callback( '#<([0-9a-f]{40})>#', function ( $matches ) use ( &$masked ) {
+			$sha = $matches[1];
+			return isset( $masked[$sha] ) ? $masked[$sha] : $matches[0];
+		}, $text );
 
 		/**
 		 * Temporary fix for bad links in help messages. As a special case,
@@ -290,8 +306,15 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 		return $text;
 	}
 
-	protected function getExamples() {
-		return 'api.php?action=query&meta=siteinfo&siprop=namespaces&format=' . $this->getModuleName();
+	public function getExamples() {
+		return array(
+			'api.php?action=query&meta=siteinfo&siprop=namespaces&format=' . $this->getModuleName()
+				=> "Format the query result in the {$this->getModuleName()} format",
+		);
+	}
+
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/API:Data_formats';
 	}
 
 	public function getDescription() {
@@ -299,7 +322,7 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 	}
 
 	public static function getBaseVersion() {
-		return __CLASS__ . ': $Id: ApiFormatBase.php 75970 2010-11-04 00:55:30Z reedy $';
+		return __CLASS__ . ': $Id$';
 	}
 }
 
@@ -333,6 +356,8 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 
 	/**
 	 * Feed does its own headers
+	 *
+	 * @return null
 	 */
 	public function getMimeType() {
 		return null;
@@ -340,6 +365,8 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 
 	/**
 	 * Optimization - no need to sanitize data that will not be needed
+	 *
+	 * @return bool
 	 */
 	public function getNeedsRawData() {
 		return true;
@@ -368,6 +395,6 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFormatBase.php 75970 2010-11-04 00:55:30Z reedy $';
+		return __CLASS__ . ': $Id$';
 	}
 }
