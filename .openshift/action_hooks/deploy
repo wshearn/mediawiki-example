@@ -6,6 +6,9 @@
 
 set -e
 
+base_version=1.19
+version=1.19.15
+
 if [ -z $OPENSHIFT_MYSQL_DB_HOST ]
 then
     echo 1>&2
@@ -14,6 +17,17 @@ then
     echo "then make a sample commit (add whitespace somewhere) and re-push" 1>&2
     echo 1>&2
     exit 5
+fi
+
+# Download and extract mediawiki
+if [[ ! -d ${OPENSHIFT_DATA_DIR}/mediawiki-${version} ]]
+then
+    cd ${OPENSHIFT_DATA_DIR}
+
+    wget http://releases.wikimedia.org/mediawiki/${base_version}/mediawiki-${version}.tar.gz
+    tar xf mediawiki-${version}.tar.gz
+
+    cd - > /dev/null
 fi
 
 # Confirm database exists, if not create it
@@ -34,3 +48,39 @@ then
 else
     echo "Database found, skipping build"
 fi
+
+if [[ ! -f ${OPENSHIFT_DATA_DIR}/mediawiki_upgrade_key ]]
+then
+    echo $(date +%s | sha256sum | base64 | head -c 16 ; echo) > ${OPENSHIFT_DATA_DIR}/mediawiki_upgrade_key
+    echo "=================================================="
+    echo "  Mediawiki Upgrade Key: $(cat $OPENSHIFT_DATA_DIR/mediawiki_upgrade_key)"
+    echo "=================================================="
+fi
+
+if [[ ! -f ${OPENSHIFT_DATA_DIR}/mediawiki_secret_key ]]
+then
+    echo $(date +%s | sha256sum | base64 | head -c 64 ; echo) > ${OPENSHIFT_DATA_DIR}/mediawiki_secret_key
+fi
+
+upgrade_key=$(cat ${OPENSHIFT_DATA_DIR}/mediawiki_upgrade_key)
+secret_key=(cat ${OPENSHIFT_DATA_DIR}/mediawiki_secret_key)
+
+if [[ ! -d ${OPENSHIFT_DATA_DIR}/images ]]
+then
+    rm -f ${OPENSHIFT_DATA_DIR}/images
+    mkdir ${OPENSHIFT_DATA_DIR}/images
+fi
+
+if [[ ! -d ${OPENSHIFT_REPO_DIR}/php ]]
+then
+    rm -f mkdir ${OPENSHIFT_REPO_DIR}/php
+    mkdir ${OPENSHIFT_REPO_DIR}/php
+fi
+
+cp -r ${OPENSHIFT_DATA_DIR}/mediawiki-${version}/* ${OPENSHIFT_REPO_DIR}/php/
+cp -r ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/LocalSettings.php ${OPENSHIFT_REPO_DIR}/php/
+
+sed -i "s/MEDIAWIKI_UPGRADE_KEY/${upgrade_key}/;s/MEDIAWIKI_SECRET_KEY/${secret_key}/" ${OPENSHIFT_REPO_DIR}/php/LocalSettings.php
+
+rm -rf ${OPENSHIFT_REPO_DIR}/images
+ln -s ${OPENSHIFT_DATA_DIR}/images ${OPENSHIFT_REPO_DIR}/images
